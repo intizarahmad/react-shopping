@@ -5,7 +5,7 @@ export const ActionTypes = {
 };
 
 export const addToCart = (productID) => (dispatch, getState) => {
-  let {cart} = getState();
+  let {cart, shop} = getState();
   let cartItems = [...cart.items];
   let products = [...shop.productList.data];
   
@@ -24,10 +24,11 @@ export const addToCart = (productID) => (dispatch, getState) => {
     cartItems.push(itemDetail);
   }
   dispatch({ type: ActionTypes.UPDATE_CART , payload:cartItems });
+
 };
 
 export const removeFromCart = (productID) => (dispatch, getState) => {
-  let {cart, shop } = getState();
+  let {cart } = getState();
   let cartItems = [...cart.items];
   
   let productFound =cartItems.find((item)=>{

@@ -5,7 +5,7 @@ export const ActionTypes = {
 };
 
 export const addToCart = (productID) => (dispatch, getState) => {
-  let {cart, shop } = getState();
+  let {cart} = getState();
   let cartItems = [...cart.items];
   let products = [...shop.productList.data];
   
@@ -34,8 +34,8 @@ export const removeFromCart = (productID) => (dispatch, getState) => {
     return item.id === productID;
   });
   if(productFound){
-    if(productFound.quantity == 1 ){
-      cartItems =  cartItems.filter(item=>item.id !=productID)
+    if(productFound.quantity === 1 ){
+      cartItems =  cartItems.filter(item=>item.id !==productID)
     }else{
       cartItems.map((item, index)=>{
         if(item.id === productID ){

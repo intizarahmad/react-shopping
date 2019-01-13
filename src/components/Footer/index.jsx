@@ -8,7 +8,7 @@ class index extends Component {
                 <div className="row">
                     <div className="col-md-8">
                         <div className="copyright">
-                           <p>All code is on github. <a href="https://github.com/intizarahmad" target="_blank">Intizar Ahmad</a></p>
+                           <p>All code is on github. <a href="https://github.com/intizarahmad/react-shopping" target="_blank">Intizar Ahmad</a></p>
                         </div>
                     </div>
                 </div>

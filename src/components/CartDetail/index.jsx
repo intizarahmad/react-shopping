@@ -26,7 +26,7 @@ const CartDetail = (props) =>{
                                     <tbody>
                                         {
                                             cartItems.map((cartItem)=>{
-                                                return <CartItem  cartItem= {cartItem} removeCartClicked ={removeCartItem}  />
+                                                return <CartItem key={cartItem.id} cartItem= {cartItem} removeCartClicked ={removeCartItem}  />
                                             })
                                         }
                                     </tbody>

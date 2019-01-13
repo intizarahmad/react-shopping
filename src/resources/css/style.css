@@ -922,6 +922,8 @@ div.quantity input.plus, div.quantity input.minus {
     height: 25px;
     line-height: 15px;
     width: 25px;
+    margin-left:10px;
+    margin-right:10px;
 }
 td.product-quantity div.quantity {
     float: none;

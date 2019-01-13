@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PageTitle from '../../components/PageTitle';
 import CartDetail from '../../components/CartDetail';
 import { getCartItemsSeletor, totalCostSeletor } from '../../store/cart/selectors';
-import { removeFromCart } from '../../store/cart/actions';
+import { removeFromCart, addOneItem, removeOneItem } from '../../store/cart/actions';
 
 class Cart extends Component {
     constructor(props){
@@ -17,12 +17,31 @@ class Cart extends Component {
         removeFromCart(productId);
         toast.success("Item deleted successfully");
     }
+
+    removeOneItemHandler = (productId)=>{
+        const {removeOneItem } = this.props;
+        removeOneItem(productId);
+        toast.success("One item deleted successfully");
+    }
+
+    addOneItemHandler = (productId)=>{
+        const {addOneItem } = this.props;
+        addOneItem(productId);
+        toast.success("One item deleted successfully");
+    }
+
     render() {
         const {cartItems, totalCost} = this.props;
         return (
             <Fragment>
-               <PageTitle title="Shopping Cart" />
-               <CartDetail totalCost= {totalCost}cartItems=  {cartItems} removeCartItem = {this.removeFromCartHandler}/>
+               <PageTitle title="Cart Details" />
+               <CartDetail 
+                totalCost= {totalCost} 
+                cartItems=  {cartItems}
+                removeCartItem = {this.removeFromCartHandler} 
+                removeOneItem = {this.removeOneItemHandler} 
+                addOneItem = {this.addOneItemHandler} 
+                />
             </Fragment>
         );
     }
@@ -33,7 +52,9 @@ const mapStateToProps = state => ({
  });
  
  const mapDispatchToProps = {
-   removeFromCart
+   removeFromCart,
+   removeOneItem,
+   addOneItem
  };
  export default connect(
    mapStateToProps,

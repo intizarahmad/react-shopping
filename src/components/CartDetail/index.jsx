@@ -1,7 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
 const CartDetail = (props) =>{
-   const {cartItems, removeCartItem, totalCost} = props;
+   const {cartItems, removeCartItem, totalCost, removeOneItem, addOneItem} = props;
         return (
         <div className="single-product-area">
         <div className="container">
@@ -26,7 +26,7 @@ const CartDetail = (props) =>{
                                     <tbody>
                                         {
                                             cartItems.map((cartItem)=>{
-                                                return <CartItem key={cartItem.id} cartItem= {cartItem} removeCartClicked ={removeCartItem}  />
+                                                return <CartItem key={cartItem.id} cartItem= {cartItem} removeCartClicked ={removeCartItem} removeOneItem ={removeOneItem} addOneItem={addOneItem}  />
                                             })
                                         }
                                         <tr>

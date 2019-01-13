@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CartItem = ({cartItem, removeCartClicked}) => {
+const CartItem = ({cartItem, removeCartClicked,addOneItem, removeOneItem }) => {
     return (
         <tr className="cart_item">
                                         
@@ -21,7 +21,13 @@ const CartItem = ({cartItem, removeCartClicked}) => {
                 <span className="amount">${cartItem.price}</span> 
             </td>
 
-            <td className="product-quantity">{cartItem.quantity}</td>
+            <td className="product-quantity">
+                <div class="quantity buttons_added">
+                    <input type="button" class="minus" value="-" onClick={()=>removeOneItem(cartItem.id)}/>
+                    {cartItem.quantity}   
+                    <input type="button" class="plus" value="+" onClick={()=>addOneItem(cartItem.id)}/>
+                </div>
+            </td>
 
             <td className="product-subtotal">
                 <span className="amount">${cartItem.price*cartItem.quantity}</span> 

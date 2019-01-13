@@ -24,10 +24,44 @@ export const addToCart = (productID) => (dispatch, getState) => {
     cartItems.push(itemDetail);
   }
   dispatch({ type: ActionTypes.UPDATE_CART , payload:cartItems });
+};
 
+export const addOneItem = (productID) => (dispatch, getState) => {
+  let {cart, shop} = getState();
+  let cartItems = [...cart.items];
+  let products = [...shop.productList.data];
+  
+  let productFound =cartItems.find((item)=>{
+    return item.id===productID;
+  });
+  if(productFound){
+    cartItems.map((item, index)=>{
+      if(item.id===productID){
+        cartItems[index].quantity = cartItems[index].quantity+1;
+      }
+    });
+  }else{
+    let itemDetail = products.find(product=>product.id === productID );
+    itemDetail.quantity = 1;
+    cartItems.push(itemDetail);
+  }
+  dispatch({ type: ActionTypes.UPDATE_CART , payload:cartItems });
 };
 
 export const removeFromCart = (productID) => (dispatch, getState) => {
+  let {cart } = getState();
+  let cartItems = [...cart.items];
+  
+  let productFound =cartItems.find((item)=>{
+    return item.id === productID;
+  });
+  if(productFound){
+      cartItems =  cartItems.filter(item=>item.id !==productID)
+  }
+  dispatch({ type: ActionTypes.UPDATE_CART , payload:cartItems });
+};
+
+export const removeOneItem= (productID) => (dispatch, getState) => {
   let {cart } = getState();
   let cartItems = [...cart.items];
   

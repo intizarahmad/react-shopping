@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { connect } from "react-redux";
 import PageTitle from '../../components/PageTitle';
 import CartDetail from '../../components/CartDetail';
-import { getCartItemsSeletor } from '../../store/cart/selectors';
+import { getCartItemsSeletor, totalCostSeletor } from '../../store/cart/selectors';
 import { removeFromCart } from '../../store/cart/actions';
 
 class Cart extends Component {
@@ -18,17 +18,18 @@ class Cart extends Component {
         toast.success("Item deleted successfully");
     }
     render() {
-        const {cartItems} = this.props;
+        const {cartItems, totalCost} = this.props;
         return (
             <Fragment>
                <PageTitle title="Shopping Cart" />
-               <CartDetail cartItems=  {cartItems} removeCartItem = {this.removeFromCartHandler}/>
+               <CartDetail totalCost= {totalCost}cartItems=  {cartItems} removeCartItem = {this.removeFromCartHandler}/>
             </Fragment>
         );
     }
 }
 const mapStateToProps = state => ({
-    cartItems : getCartItemsSeletor(state)
+    cartItems : getCartItemsSeletor(state),
+    totalCost: totalCostSeletor(state)
  });
  
  const mapDispatchToProps = {

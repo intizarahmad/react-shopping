@@ -1,7 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
 const CartDetail = (props) =>{
-   const {cartItems, removeCartItem} = props;
+   const {cartItems, removeCartItem, totalCost} = props;
         return (
         <div className="single-product-area">
         <div className="container">
@@ -29,6 +29,13 @@ const CartDetail = (props) =>{
                                                 return <CartItem key={cartItem.id} cartItem= {cartItem} removeCartClicked ={removeCartItem}  />
                                             })
                                         }
+                                        <tr>
+                                            <td class="actions"  style={{'textAlign':'right'}}  colSpan="5">
+                                            <strong>Order Total</strong>
+                                            </td>
+                                           
+                                            <td><strong><span class="amount">${totalCost}</span></strong> </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                         

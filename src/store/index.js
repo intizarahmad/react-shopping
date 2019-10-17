@@ -6,22 +6,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import shop from './shop/reducer';
 import cart from './cart/reducer';
 
-const appReducer = combineReducers({
+const rootReducer = combineReducers({
     shop,
     cart
 });
 
-const rootReducer = (state, action) => {
-  return appReducer(state, action);
-};
-
-function configureStore(preloadedState) {
-  const middlewares = [];
-  return createStore(
-    rootReducer,
-    preloadedState,
-    composeWithDevTools(applyMiddleware(...middlewares, thunkMiddleware)),
-  );
-}
-
-export default configureStore();
+const store =  createStore(rootReducer,
+  composeWithDevTools(applyMiddleware(thunkMiddleware)) ) 
+export default store;
